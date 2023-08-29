@@ -556,23 +556,3 @@ service remosaic_daemon /system/vendor/bin/remosaic_daemon
 
 on property:ro.build.product=grus
     start remosaic_daemon
-
-# for gts test
-on property:persist.sys.miui_optimization=false
-    write /dev/stune/top-app/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 100
-
-on property:persist.sys.miui_optimization=true
-    write /dev/stune/top-app/schedtune.prefer_idle 0
-    write /dev/stune/top-app/schedtune.boost 0
-
-on post-fs-data
-    chmod 0666 /dev/migt
-    restorecon /dev/migt
-    chmod 0777 /sys/module/migt/parameters/migt_freq
-    restorecon /sys/module/migt/parameters/migt_freq
-    chmod 0777 /sys/module/migt/parameters/migt_ms
-    restorecon /sys/module/migt/parameters/migt_ms
-    chmod 0777 /sys/module/migt/parameters/migt_thresh
-    restorecon /sys/module/migt/parameters/migt_thresh
-
