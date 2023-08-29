@@ -401,15 +401,6 @@ service thermal-engine /system/vendor/bin/thermal-engine  -T
 #   group gps system qcom_diag diag log inet net_raw
 #   disabled
 
-on property:vold.decrypt=trigger_restart_framework
-   start cnss_diag
-
-service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
-   class main
-   user system
-   group system wifi inet sdcard_rw media_rw diag
-   oneshot
-
 service panel-info-sh /system/vendor/bin/sh /vendor/etc/init.panel_info.sh
     class core
     user root
