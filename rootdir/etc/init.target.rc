@@ -556,3 +556,14 @@ service remosaic_daemon /system/vendor/bin/remosaic_daemon
 
 on property:ro.build.product=grus
     start remosaic_daemon
+
+# F2FS Gc Booster Control
+# 0: disable boost 1: enabled boost
+
+on property:sys.gc_booster.enable=0
+    # use userdata name is sda29
+    write /sys/fs/f2fs/sda29/gc_booster 0
+
+on property:sys.gc_booster.enable=1
+    # use userdata name is sda29
+    write /sys/fs/f2fs/sda29/gc_booster 1
