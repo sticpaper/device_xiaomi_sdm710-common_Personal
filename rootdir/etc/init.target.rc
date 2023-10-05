@@ -567,18 +567,3 @@ on property:sys.gc_booster.enable=0
 on property:sys.gc_booster.enable=1
     # use userdata name is sda29
     write /sys/fs/f2fs/sda29/gc_booster 1
-    
-# Reclaim memory
-# 0: none 1: low 2: high 3: urgent
-
-on property:sys.mem_reclaim=1
-    write /proc/global_reclaim 524288
-    setprop sys.mem_reclaim 0
-
-on property:sys.mem_reclaim=2
-    write /proc/global_reclaim 2621440
-    setprop sys.mem_reclaim 0
-
-on property:sys.mem_reclaim=3
-    write /proc/global_reclaim 5242880
-    setprop sys.mem_reclaim 0
